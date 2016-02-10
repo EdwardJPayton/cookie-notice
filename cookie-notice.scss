@@ -37,11 +37,18 @@ body {
 
     &._themeDark {
       background: #212121;
-      color: #fff;
+
+      p,
+      button {
+        color: #fff;
+      }
     }
     &._themeLight {
       background: #fff;
-      color: #212121;
+      p,
+      button {
+        color: #212121;
+      }
     }
 
     &._bar {

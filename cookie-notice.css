@@ -25,11 +25,19 @@ body {
 
 .cookie-content._themeDark {
   background: #212121;
+}
+
+.cookie-content._themeDark p,
+.cookie-content._themeDark button {
   color: #fff;
 }
 
 .cookie-content._themeLight {
   background: #fff;
+}
+
+.cookie-content._themeLight p,
+.cookie-content._themeLight button {
   color: #212121;
 }
 
