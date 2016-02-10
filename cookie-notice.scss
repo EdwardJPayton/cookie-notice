@@ -1,6 +1,8 @@
 // Compiled with Atom sass
 
 $barHeight: 50px;
+$barPadding-TopBottom: 8px;
+
 $boxWidth: 300px;
 $fontFamily: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial;
 
@@ -11,7 +13,7 @@ html,
 body {
   height:100%;
   min-height: 100%;
-  background: red;
+  //background: red;
 }
 
 // COOKIE BAR STYLES
@@ -22,6 +24,9 @@ body {
     font-family: $fontFamily;
     font-size: 16px;
     box-sizing:border-box;
+
+    opacity: 1;
+    transition: opacity 0.2s ease;
     & * {
       box-sizing: border-box;
     }
@@ -45,7 +50,7 @@ body {
         left: 0;
         right: 0;
         height: $barHeight;
-        padding: 8px 30px;
+        padding: $barPadding-TopBottom 30px;
         box-shadow: 0 0 5px rgba(0,0,0,0.2);
       }
       &Top {
@@ -60,7 +65,7 @@ body {
     &._box {
       &Left,
       &Right {
-        width: $boxWidth;
+        max-width: $boxWidth;
         bottom: 10px;
         padding: 10px 15px 15px;
         border-radius: 4px;
@@ -75,9 +80,11 @@ body {
       }
       &Left {
         left: 10px;
+        margin-right:10px;
       }
       &Right {
         right: 10px;
+        margin-left:10px;
       }
     }
     &._boxLeft,
@@ -89,16 +96,16 @@ body {
 
     p,
     button {
-      display: inline-block;
       font-size: 16px;
       transform: translateY(50px);
     }
     p {
+      float: left;
       margin: 7px 0;
     }
     button {
       float: right;
-      height: 100%;
+      height: 34px;
       padding-left: 40px;
       padding-right: 40px;
       background: #B2FF59;
@@ -113,7 +120,7 @@ body {
     a {
       color: darken(#B2FF59,25%);
       text-decoration: none;
-      margin-left: 5px;
+      margin: 0 5px;
       &:hover {
         text-decoration: underline;
       }
@@ -166,4 +173,26 @@ body {
   -webkit-animation-fill-mode: forwards;
   animation: 0.6s slideIn ease;
   animation-fill-mode: forwards;
+}
+
+@media only screen and (max-width:1150px) {
+  .cookie-content {
+    &._barTop,
+    &._barBottom {
+      height: auto;
+      button {
+        float: left;
+      }
+    }
+  }
+}
+@media only screen and (max-width:500px) {
+  .cookie-content {
+    &._barTop,
+    &._barBottom {
+      button {
+        width: 100%;
+      }
+    }
+  }
 }

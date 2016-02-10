@@ -18,8 +18,12 @@ var cookieNotice = function(options) {
     }
     return null;
   }
-  var cookieVisibility = function(choice) {
-    document.getElementById('cookieNotice').style.visibility = choice;
+  var cookieVisibility = function() {
+    var cookieNotice = document.getElementById('cookieNotice');
+    cookieNotice.style.opacity = 0;
+    var transitionTime = setTimeout(function() {
+      cookieNotice.style.visibility = 'hidden';
+    },250);
   }
 
   // If cookie does not exist
@@ -71,17 +75,17 @@ var cookieNotice = function(options) {
     var cookieClose = document.getElementById('cookieClose');
     if(cookieClose.addEventListener) {
       cookieClose.addEventListener('click', function() {
-        cookieVisibility('hidden');
+        cookieVisibility();
       },false);
     } else {
       cookieClose.attachEvent('onclick', function() {
-        cookieVisibility('hidden');
+        cookieVisibility();
       });
     }
 
     // Hide bar
     var cookieTime = setTimeout(function() {
-      cookieVisibility('hidden');
+      cookieVisibility();
     },timeToHide * 1000);
 
   }
