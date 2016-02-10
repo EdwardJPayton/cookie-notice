@@ -38,15 +38,14 @@ body {
     &._themeDark {
       background: #212121;
 
-      p,
-      button {
+      p {
         color: #fff;
       }
+
     }
     &._themeLight {
       background: #fff;
-      p,
-      button {
+      p {
         color: #212121;
       }
     }
@@ -100,10 +99,13 @@ body {
         box-shadow: 0 2px 10px rgba(0,0,0,0.25);
       }
     }
-
     p,
+    a,
     button {
       font-size: 16px;
+    }
+    p,
+    button {
       transform: translateY(50px);
     }
     p {
@@ -111,6 +113,7 @@ body {
       margin: 7px 0;
     }
     button {
+      color: #212121;
       float: right;
       height: 34px;
       padding-left: 40px;

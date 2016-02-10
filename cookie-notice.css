@@ -27,8 +27,7 @@ body {
   background: #212121;
 }
 
-.cookie-content._themeDark p,
-.cookie-content._themeDark button {
+.cookie-content._themeDark p {
   color: #fff;
 }
 
@@ -36,8 +35,7 @@ body {
   background: #fff;
 }
 
-.cookie-content._themeLight p,
-.cookie-content._themeLight button {
+.cookie-content._themeLight p {
   color: #212121;
 }
 
@@ -89,8 +87,13 @@ body {
 }
 
 .cookie-content p,
+.cookie-content a,
 .cookie-content button {
   font-size: 16px;
+}
+
+.cookie-content p,
+.cookie-content button {
   transform: translateY(50px);
 }
 
@@ -100,6 +103,7 @@ body {
 }
 
 .cookie-content button {
+  color: #212121;
   float: right;
   height: 34px;
   padding-left: 40px;
