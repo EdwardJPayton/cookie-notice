@@ -39,7 +39,7 @@ body {
   color: #212121;
 }
 
-.cookie-content._barTop, .cookie-content._barBottom {
+.cookie-content._positionTop, .cookie-content._positionBottom {
   left: 0;
   right: 0;
   height: 50px;
@@ -47,17 +47,17 @@ body {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-.cookie-content._barTop {
+.cookie-content._positionTop {
   top: 0;
   transform: translateY(-50px);
 }
 
-.cookie-content._barBottom {
+.cookie-content._positionBottom {
   bottom: 0;
   transform: translateY(50px);
 }
 
-.cookie-content._boxLeft, .cookie-content._boxRight {
+.cookie-content._positionLeft, .cookie-content._positionRight {
   max-width: 300px;
   bottom: 10px;
   padding: 10px 15px 15px;
@@ -65,25 +65,25 @@ body {
   transform: translateY(50px);
 }
 
-.cookie-content._boxLeft button, .cookie-content._boxRight button {
+.cookie-content._positionLeft button, .cookie-content._positionRight button {
   width: 100%;
   margin-top: 10px;
   padding-top: 8px;
   padding-bottom: 8px;
 }
 
-.cookie-content._boxLeft {
+.cookie-content._positionLeft._themeLight, .cookie-content._positionRight._themeLight {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.cookie-content._positionLeft {
   left: 10px;
   margin-right: 10px;
 }
 
-.cookie-content._boxRight {
+.cookie-content._positionRight {
   right: 10px;
   margin-left: 10px;
-}
-
-.cookie-content._boxLeft._themeLight, .cookie-content._boxRight._themeLight {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
 }
 
 .cookie-content p,
@@ -129,20 +129,6 @@ body {
   text-decoration: underline;
 }
 
-.cookie-content._barTop p,
-.cookie-content._barTop button, .cookie-content._barBottom p,
-.cookie-content._barBottom button {
-  animation-delay: 0.1s;
-}
-
-.cookie-content._boxLeft p, .cookie-content._boxRight p {
-  animation-delay: 0.2s;
-}
-
-.cookie-content._boxLeft button, .cookie-content._boxRight button {
-  animation-delay: 0.25s;
-}
-
 @-webkit-keyframes slideIn {
   to {
     transform: translateY(0);
@@ -157,11 +143,11 @@ body {
   }
 }
 
-.cookie-content._barTop, .cookie-content._barBottom, .cookie-content._boxLeft, .cookie-content._boxRight, .cookie-content._barTop p,
-.cookie-content._barTop button, .cookie-content._barBottom p,
-.cookie-content._barBottom button, .cookie-content._boxLeft p,
-.cookie-content._boxLeft button, .cookie-content._boxRight p,
-.cookie-content._boxRight button {
+.cookie-content._positionTop, .cookie-content._positionBottom, .cookie-content._positionLeft, .cookie-content._positionRight, .cookie-content._positionTop p,
+.cookie-content._positionTop button, .cookie-content._positionBottom p,
+.cookie-content._positionBottom button, .cookie-content._positionLeft p,
+.cookie-content._positionLeft button, .cookie-content._positionRight p,
+.cookie-content._positionRight button {
   opacity: 0;
   -webkit-animation: 0.6s slideIn ease;
   -webkit-animation-fill-mode: forwards;
@@ -169,17 +155,34 @@ body {
   animation-fill-mode: forwards;
 }
 
+.cookie-content._positionTop p,
+.cookie-content._positionTop button, .cookie-content._positionBottom p,
+.cookie-content._positionBottom button {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+
+.cookie-content._positionLeft p, .cookie-content._positionRight p {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+.cookie-content._positionLeft button, .cookie-content._positionRight button {
+  -webkit-animation-delay: 0.25s;
+  animation-delay: 0.25s;
+}
+
 @media only screen and (max-width: 1150px) {
-  .cookie-content._barTop, .cookie-content._barBottom {
+  .cookie-content._positionTop, .cookie-content._positionBottom {
     height: auto;
   }
-  .cookie-content._barTop button, .cookie-content._barBottom button {
+  .cookie-content._positionTop button, .cookie-content._positionBottom button {
     float: left;
   }
 }
 
 @media only screen and (max-width: 500px) {
-  .cookie-content._barTop button, .cookie-content._barBottom button {
+  .cookie-content._positionTop button, .cookie-content._positionBottom button {
     width: 100%;
   }
 }

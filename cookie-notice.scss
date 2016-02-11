@@ -16,7 +16,7 @@ body {
   //background: red;
 }
 
-// COOKIE BAR STYLES
+// Cookie notice
 .cookie {
   &-notice {
     position: relative;
@@ -24,7 +24,6 @@ body {
     font-family: $fontFamily;
     font-size: 16px;
     box-sizing:border-box;
-
     opacity: 1;
     transition: opacity 0.2s ease;
     & * {
@@ -34,14 +33,11 @@ body {
   &-content {
     position: fixed;
     overflow: hidden;
-
     &._themeDark {
       background: #212121;
-
       p {
         color: #fff;
       }
-
     }
     &._themeLight {
       background: #fff;
@@ -50,7 +46,7 @@ body {
       }
     }
 
-    &._bar {
+    &._position {
       &Top,
       &Bottom {
         left: 0;
@@ -67,8 +63,6 @@ body {
         bottom: 0;
         transform: translateY($barHeight);
       }
-    }
-    &._box {
       &Left,
       &Right {
         max-width: $boxWidth;
@@ -76,12 +70,14 @@ body {
         padding: 10px 15px 15px;
         border-radius: 4px;
         transform: translateY(50px);
-
         button {
           width:100%;
           margin-top: 10px;
           padding-top: 8px;
           padding-bottom: 8px;
+        }
+        &._themeLight {
+          box-shadow: 0 2px 10px rgba(0,0,0,0.25);
         }
       }
       &Left {
@@ -91,12 +87,6 @@ body {
       &Right {
         right: 10px;
         margin-left:10px;
-      }
-    }
-    &._boxLeft,
-    &._boxRight {
-      &._themeLight {
-        box-shadow: 0 2px 10px rgba(0,0,0,0.25);
       }
     }
     p,
@@ -135,36 +125,9 @@ body {
         text-decoration: underline;
       }
     }
-
-    // Animation
-    &._barTop,
-    &._barBottom,
-    &._boxLeft,
-    &._boxRight {
-      @extend %animation;
-      p,
-      button {
-        @extend %animation;
-      }
-    }
-    &._barTop,
-    &._barBottom {
-      p,
-      button {
-        animation-delay: 0.1s;
-      }
-    }
-    &._boxLeft,
-    &._boxRight {
-      p {
-        animation-delay: 0.2s;
-      }
-      button {
-        animation-delay: 0.25s;
-      }
-    }
   }
 }
+// Animation
 @-webkit-keyframes slideIn {
   to {
     transform: translateY(0);
@@ -184,11 +147,43 @@ body {
   animation: 0.6s slideIn ease;
   animation-fill-mode: forwards;
 }
+.cookie-content {
+  &._positionTop,
+  &._positionBottom {
+    p,
+    button {
+      -webkit-animation-delay: 0.1s;
+      animation-delay: 0.1s;
+    }
+  }
+  &._positionLeft,
+  &._positionRight {
+    p {
+      -webkit-animation-delay: 0.2s;
+      animation-delay: 0.2s;
+    }
+    button {
+      -webkit-animation-delay: 0.25s;
+      animation-delay: 0.25s;
+    }
+  }
+  &._positionTop,
+  &._positionBottom,
+  &._positionLeft,
+  &._positionRight {
+    @extend %animation;
+    p,
+    button {
+      @extend %animation;
+    }
+  }
+}
 
+// Responsive (desktop first for IE8 compatibility)
 @media only screen and (max-width:1150px) {
   .cookie-content {
-    &._barTop,
-    &._barBottom {
+    &._positionTop,
+    &._positionBottom {
       height: auto;
       button {
         float: left;
@@ -198,8 +193,8 @@ body {
 }
 @media only screen and (max-width:500px) {
   .cookie-content {
-    &._barTop,
-    &._barBottom {
+    &._positionTop,
+    &._positionBottom {
       button {
         width: 100%;
       }

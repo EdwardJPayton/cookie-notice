@@ -1,12 +1,20 @@
 'use strict';
 
 var cookieNotice = function(options) {
-  var themePosition = (typeof options.position === 'undefined') ? 'bottom' : options.position,
-      themeColor = (typeof options.theme === 'undefined') ? 'dark' : options.theme,
-      cookieText = (typeof options.text === 'undefined') ? 'No text entered' : options.text,
-      policyPage = (typeof options.policyPage === 'undefined') ? false : options.policyPage,
-      timeToHide = (typeof options.timeToHide === 'undefined') ? 12 : options.timeToHide
 
+  var isUndefined = function(myObj,myDefault){
+    return (typeof myObj === 'undefined') ? myDefault : myObj;
+  }
+
+  var position = isUndefined(options.position, 'bottom'),
+      theme = isUndefined(options.theme, 'dark'),
+      text = isUndefined(options.text, 'No text entered'),
+      policyPage = isUndefined(options.policyPage, false),
+      timeToHide = isUndefined(options.timeToHide, 12);
+
+  var titleCase = function(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
 
   var cookieFind = function(name) {
     var nameEQ = name + "=";
@@ -29,32 +37,12 @@ var cookieNotice = function(options) {
   // If cookie does not exist
   if(!cookieFind('cookieWarning')) {
     // Create bar
-    var classPosition,classColor;
-
-    switch(themePosition) {
-      case "left":
-        classPosition = " _boxLeft";
-        break;
-      case "right":
-        classPosition = " _boxRight";
-        break;
-      case "top":
-        classPosition = " _barTop";
-        break;
-      default:
-        classPosition = " _barBottom";
-    }
-    switch(themeColor) {
-      case "light":
-        classColor = " _themeLight";
-        break;
-      default:
-        classColor = " _themeDark";
-    }
+    var classPosition = titleCase(position);
+    var classColor = titleCase(theme);
     var cookieHtml = document.createElement('div');
     cookieHtml.id = 'cookieNotice';
     cookieHtml.className = 'cookie-notice';
-    cookieHtml.innerHTML = '<div class="cookie-content' + classPosition + classColor + '"><p id="cookieText">' + cookieText + '</p><button class="cookie-close" id="cookieClose">OK</button></div>';
+    cookieHtml.innerHTML = '<div class="cookie-content _position' + classPosition + ' _theme' + classColor + '"><p id="cookieText">' + text + '</p><button id="cookieClose">OK</button></div>';
     document.body.insertBefore(cookieHtml, document.body.firstChild);
 
     // Add link to bar
@@ -84,7 +72,7 @@ var cookieNotice = function(options) {
     }
 
     // Hide bar
-    var cookieTime = setTimeout(function() {
+    setTimeout(function() {
       cookieVisibility();
     },timeToHide * 1000);
 
