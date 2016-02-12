@@ -47,6 +47,14 @@ body {
     }
 
     &._position {
+      &Bottom,
+      &Left,
+      &Right {
+        p,
+        button {
+          transform: translateY(50px);
+        }
+      }
       &Top,
       &Bottom {
         left: 0;
@@ -58,6 +66,10 @@ body {
       &Top {
         top: 0;
         transform: translateY(-#{$barHeight});
+        p,
+        button {
+          transform: translateY(-50px);
+        }
       }
       &Bottom {
         bottom: 0;
@@ -93,10 +105,6 @@ body {
     a,
     button {
       font-size: 16px;
-    }
-    p,
-    button {
-      transform: translateY(50px);
     }
     p {
       float: left;

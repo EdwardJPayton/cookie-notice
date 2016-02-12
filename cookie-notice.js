@@ -29,7 +29,7 @@ var cookieNotice = function(options) {
   var cookieVisibility = function() {
     var cookieNotice = document.getElementById('cookieNotice');
     cookieNotice.style.opacity = 0;
-    var transitionTime = setTimeout(function() {
+    setTimeout(function() {
       cookieNotice.style.visibility = 'hidden';
     },250);
   }
